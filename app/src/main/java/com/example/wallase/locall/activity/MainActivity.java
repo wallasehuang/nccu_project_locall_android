@@ -1,7 +1,6 @@
 package com.example.wallase.locall.activity;
 
 import android.content.Intent;
-import android.support.annotation.UiThread;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +23,7 @@ import com.example.wallase.locall.green_dao.User;
 import com.example.wallase.locall.green_dao.UserDao;
 import com.example.wallase.locall.model.Response;
 
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.Background;

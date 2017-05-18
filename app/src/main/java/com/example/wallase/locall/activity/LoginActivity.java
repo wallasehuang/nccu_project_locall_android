@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.wallase.locall.R;
 import com.example.wallase.locall.api.Auth;
@@ -13,6 +14,7 @@ import com.example.wallase.locall.green_dao.UserDao;
 import com.example.wallase.locall.green_dao.User;
 import com.example.wallase.locall.model.Member;
 
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.Background;
@@ -44,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     @ViewById(R.id.btnLinkToRegisterScreen)
     Button btnRegister;
+    @ViewById(R.id.error)
+    TextView txtError;
 
     @AfterViews
     void init(){
@@ -57,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         String account = editAccount.getText().toString();
         String password = editPassword.getText().toString();
         String device_token = "1234567890";
-        apiLogin(account,password,device_token);
+        apiLogin(account, password, device_token);
 
     }
 
@@ -97,9 +101,11 @@ public class LoginActivity extends AppCompatActivity {
             Member res_member = entity.getBody();
 
             if(res_member.getErrors() != null){
+                String show_error ="";
                 for(String error : res_member.getErrors()){
-                    Log.d("TAG","error: "+ error);
+                    show_error += error +"\n";
                 }
+                showError(show_error);
                 return;
             }
 
@@ -130,6 +136,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @UiThread
+    void showError(String error){
+        txtError.setText(error);
     }
 
 
