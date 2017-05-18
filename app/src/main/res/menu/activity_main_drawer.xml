@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main"
+            android:title="訊息地圖" />
+        <item
+            android:id="@+id/nav_friend"
+            android:title="好友清單" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="登出" />
+    </group>
+
+
+</menu>
