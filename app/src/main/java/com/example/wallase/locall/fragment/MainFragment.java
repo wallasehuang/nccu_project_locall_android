@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.wallase.locall.R;
 import com.example.wallase.locall.activity.LoginActivity_;
-import com.example.wallase.locall.api.Auth;
+import com.example.wallase.locall.api.AuthApi;
 import com.example.wallase.locall.app.MyApp;
 import com.example.wallase.locall.green_dao.User;
 import com.example.wallase.locall.green_dao.UserDao;
@@ -35,7 +35,7 @@ public class MainFragment extends Fragment {
     MyApp app;
 
     @RestService
-    Auth auth;
+    AuthApi authApi;
 
     @ViewById(R.id.name)
     TextView txtName;
@@ -67,28 +67,24 @@ public class MainFragment extends Fragment {
     @Background
     void logout(User user){
         try{
-            auth.setHeader("Authorization",user.getApi_token());
-            ResponseEntity<Response> entitiy = auth.logout();
+            authApi.setHeader("Authorization",user.getApi_token());
+            ResponseEntity<Response> entity = authApi.logout();
 //
             Log.d("TAG", "api_token: " + user.getApi_token());
 
-            if(entitiy == null){
+            if(entity == null){
                 Log.d("TAG","Something wrong!");
                 return;
             }
 
-            Response res = entitiy.getBody();
+            Response res = entity.getBody();
 
-            if(res.getErrors() != null){
-                for(String error: res.getErrors()){
-                    Log.d("TAG","error: "+ error);
-                }
+            if(res.getError() != null){
+                Log.d("TAG","error: "+ res.getError());
                 return;
             }
 
-            for(String message: res.getMessages()){
-                Log.d("TAG","message: " + message);
-            }
+            Log.d("TAG","message: " + res.getMessage());
 
         }catch(HttpServerErrorException e){
             Log.d("TAG","ResponseEntitiy:"+ e);

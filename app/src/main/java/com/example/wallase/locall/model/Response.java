@@ -7,22 +7,22 @@ import java.util.List;
  */
 public class Response {
 
-    private List<String> messages;
-    private List<String> errors;
+    private String message;
+    private String error;
 
-    public List<String> getMessages() {
-        return messages;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMessages(List<String> messages) {
-        this.messages = messages;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public List<String> getErrors() {
-        return errors;
+    public String getError() {
+        return error;
     }
 
-    public void setErrors(List<String> errors) {
-        this.errors = errors;
+    public void setError(String error) {
+        this.error = error;
     }
 }

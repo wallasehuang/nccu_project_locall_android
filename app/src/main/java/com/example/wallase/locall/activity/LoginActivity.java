@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.wallase.locall.R;
-import com.example.wallase.locall.api.Auth;
+import com.example.wallase.locall.api.AuthApi;
 import com.example.wallase.locall.app.MyApp;
 import com.example.wallase.locall.green_dao.UserDao;
 import com.example.wallase.locall.green_dao.User;
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     MyApp app;
 
     @RestService
-    Auth auth;
+    AuthApi authApi;
 
     @ViewById(R.id.account)
     EditText editAccount;
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
         req_member.setDevice_token(device_token);
 
         try{
-            ResponseEntity<Member> entity = auth.login(req_member);
+            ResponseEntity<Member> entity = authApi.login(req_member);
 
             if(entity == null){
                 Log.d("TAG","Something wrong!");

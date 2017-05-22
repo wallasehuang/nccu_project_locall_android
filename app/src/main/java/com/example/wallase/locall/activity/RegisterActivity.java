@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.EditText;
 
 import com.example.wallase.locall.R;
-import com.example.wallase.locall.api.Auth;
+import com.example.wallase.locall.api.AuthApi;
 import com.example.wallase.locall.model.Member;
 
 import org.androidannotations.annotations.Background;
@@ -24,7 +24,7 @@ import org.springframework.web.client.HttpServerErrorException;
 @EActivity(R.layout.activity_register)
 public class RegisterActivity extends AppCompatActivity {
     @RestService
-    Auth auth;
+    AuthApi authApi;
 
     @ViewById(R.id.account)
     EditText editAccount;
@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         req_member.setEmail(email);
 
         try {
-            ResponseEntity<Member> entity = auth.register(req_member);
+            ResponseEntity<Member> entity = authApi.register(req_member);
 
             if(entity == null){
                 Log.d("Tag","something wrong!");

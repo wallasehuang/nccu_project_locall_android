@@ -3,7 +3,6 @@ package com.example.wallase.locall.activity;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,10 +14,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.wallase.locall.R;
-import com.example.wallase.locall.api.Auth;
+import com.example.wallase.locall.api.AuthApi;
 import com.example.wallase.locall.app.MyApp;
+import com.example.wallase.locall.fragment.FriendFragment_;
+import com.example.wallase.locall.fragment.FriendListFragment_;
 import com.example.wallase.locall.fragment.MainFragment_;
-import com.example.wallase.locall.fragment.TestFragment_;
 import com.example.wallase.locall.green_dao.User;
 import com.example.wallase.locall.green_dao.UserDao;
 import com.example.wallase.locall.model.Response;
@@ -42,7 +42,7 @@ implements NavigationView.OnNavigationItemSelectedListener{
     MyApp app;
 
     @RestService
-    Auth auth;
+    AuthApi authApi;
 
     @ViewById(R.id.drawer_layout)
     DrawerLayout drawer;
@@ -68,9 +68,7 @@ implements NavigationView.OnNavigationItemSelectedListener{
 
         userInfo();
 
-        Fragment main_fragment = new MainFragment_();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent,main_fragment).commit();
+        showFragment(new MainFragment_());
 
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -83,11 +81,9 @@ implements NavigationView.OnNavigationItemSelectedListener{
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_main) {
-            Fragment main_fragment = new TestFragment_();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.flContent,main_fragment).commit();
+            showFragment(new FriendListFragment_());
         } else if (id == R.id.nav_friend) {
-            Log.d("TAG","id = friend");
+            showFragment(new FriendFragment_());
         } else if (id == R.id.nav_logout) {
             logout(user);
         }
@@ -101,7 +97,7 @@ implements NavigationView.OnNavigationItemSelectedListener{
         userDao = app.getUserDao();
         user = userDao.queryBuilder().limit(1).unique();
 
-        showUserInfo(user.getAccount(),user.getEmail());
+        showUserInfo(user.getAccount(), user.getEmail());
     }
 
     @UiThread
@@ -117,9 +113,10 @@ implements NavigationView.OnNavigationItemSelectedListener{
     @Background
     void logout(User user){
         try{
-            auth.setHeader("Authorization",user.getApi_token());
-            ResponseEntity<Response> entitiy = auth.logout();
-            Log.d("TAG","api_token: "+ user.getApi_token());
+            authApi.setHeader("Authorization",user.getApi_token());
+            ResponseEntity<Response> entitiy = authApi.logout();
+
+            Log.d("TAG", "api_token: " + user.getApi_token());
 
             if(entitiy == null){
                 Log.d("TAG","Something wrong!");
@@ -128,16 +125,12 @@ implements NavigationView.OnNavigationItemSelectedListener{
 
             Response res = entitiy.getBody();
 
-            if(res.getErrors() != null){
-                for(String error: res.getErrors()){
-                    Log.d("TAG","error: "+ error);
-                }
+            if(res.getError() != null){
+                Log.d("TAG","error: "+ res.getError());
                 return;
             }
 
-            for(String message: res.getMessages()){
-                Log.d("TAG","message: " + message);
-            }
+            Log.d("TAG","message: " + res.getMessage());
 
         }catch(HttpServerErrorException e){
             Log.d("TAG","ResponseEntitiy:"+ e);
@@ -147,8 +140,13 @@ implements NavigationView.OnNavigationItemSelectedListener{
 
         Intent intent = new Intent(this, LoginActivity_.class);
         startActivity(intent);
-        finish();
 
+    }
+
+    private void showFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.flContent,fragment)
+                .commit();
     }
 
 
