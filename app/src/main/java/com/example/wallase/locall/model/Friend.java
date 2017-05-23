@@ -3,7 +3,9 @@ package com.example.wallase.locall.model;
 /**
  * Created by wallase on 2017/5/22.
  */
+
 public class Friend {
+
 
     private int id;
     private String account;
@@ -51,3 +53,4 @@ public class Friend {
         this.type = type;
     }
 }
+

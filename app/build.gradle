@@ -51,9 +51,9 @@ dependencies {
     compile 'org.springframework.android:spring-android-rest-template:2.0.0.M4'
     compile 'com.google.code.gson:gson:2.7'
 
-    compile 'com.fasterxml.jackson.core:jackson-core:2.7.3'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.7.9'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.9'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.9'
 
 }
 repositories {

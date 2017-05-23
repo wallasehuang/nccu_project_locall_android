@@ -6,9 +6,12 @@ package com.example.wallase.locall.app;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.Fragment;
 
+import com.example.wallase.locall.R;
 import com.example.wallase.locall.green_dao.DaoMaster;
 import com.example.wallase.locall.green_dao.DaoSession;
+import com.example.wallase.locall.green_dao.User;
 import com.example.wallase.locall.green_dao.UserDao;
 
 import org.androidannotations.annotations.EApplication;
@@ -31,6 +34,10 @@ public class MyApp extends Application {
 
     public UserDao getUserDao(){
         return daoSession.getUserDao();
+    }
+
+    public User getUser(){
+        return getUserDao().queryBuilder().limit(1).unique();
     }
 
 }

@@ -1,6 +1,8 @@
 package com.example.wallase.locall.fragment;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +14,6 @@ import com.example.wallase.locall.R;
 import com.example.wallase.locall.api.FriendApi;
 import com.example.wallase.locall.app.MyApp;
 import com.example.wallase.locall.green_dao.User;
-import com.example.wallase.locall.green_dao.UserDao;
 import com.example.wallase.locall.model.Member;
 import com.example.wallase.locall.model.Response;
 import com.example.wallase.locall.model.ShipStatus;
@@ -51,7 +52,6 @@ public class FriendFragment extends Fragment {
     @ViewById(R.id.btn_action)
     Button btn_action;
 
-    private UserDao userDao;
     private User user;
 
     private int action_status;
@@ -60,8 +60,8 @@ public class FriendFragment extends Fragment {
 
     @AfterViews
     void init(){
-        userDao = app.getUserDao();
-        user = userDao.queryBuilder().limit(1).unique();
+
+        user = app.getUser();
 
         clearView();
     }
@@ -77,6 +77,11 @@ public class FriendFragment extends Fragment {
     void btn_action(){
         clearView();
         actionFriend(action_status);
+    }
+
+    @Click
+    void btn_back(){
+        showFragment(new FriendListFragment_());
     }
 
     @Background
@@ -141,7 +146,7 @@ public class FriendFragment extends Fragment {
             }
             ShipStatus shipStatus  = friendApi.checkStatus(res_member).getBody();
             member_friend.setAccount(res_member.getAccount());
-            showFriend(res_member.getAccount(),shipStatus.getStatus());
+            showFriend(res_member.getAccount(), shipStatus.getStatus());
         }catch (HttpServerErrorException e){
             Log.d("TAG","RespnseEntity:"+e);
         }
@@ -191,6 +196,14 @@ public class FriendFragment extends Fragment {
         btn_action.setText("");
     }
 
+
+    private void showFragment(Fragment fragment){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flContent, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 
 
 

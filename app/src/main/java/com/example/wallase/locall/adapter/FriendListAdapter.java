@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.example.wallase.locall.model.Member;
+import com.example.wallase.locall.model.Friend;
 import com.example.wallase.locall.view_group.FriendItemView;
 import com.example.wallase.locall.view_group.FriendItemView_;
 
@@ -20,24 +20,24 @@ import java.util.List;
 @EBean
 public class FriendListAdapter extends BaseAdapter{
 
-    List<Member> members;
+    List<Friend> friends;
 
     @RootContext
     Context context;
 
-    public void setData(List<Member> members){
-        this.members = members;
+    public void setData(List<Friend> friends){
+        this.friends = friends;
     }
 
 
     @Override
     public int getCount() {
-        return members.size();
+        return friends.size();
     }
 
     @Override
-    public Member getItem(int position) {
-        return members.get(position);
+    public Friend getItem(int position) {
+        return friends.get(position);
     }
 
     @Override

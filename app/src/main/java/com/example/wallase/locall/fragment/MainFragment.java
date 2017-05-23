@@ -52,7 +52,7 @@ public class MainFragment extends Fragment {
     void init(){
 
         userDao = app.getUserDao();
-        user = userDao.queryBuilder().limit(1).unique();
+        user = app.getUser();
 
         txtName.setText(user.getAccount());
         txtEmail.setText(user.getEmail());

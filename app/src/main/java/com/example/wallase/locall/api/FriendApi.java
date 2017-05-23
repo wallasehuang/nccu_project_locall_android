@@ -16,8 +16,6 @@ import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
-import java.util.List;
-
 /**
  * Created by wallase on 2017/5/19.
  */
@@ -35,15 +33,15 @@ public interface FriendApi {
 
     @Post("/friend/list")
     @RequiresHeader("Authorization")
-    List<Friend> list();
+    Friend[] list();
 
     @Post("/friend/listByInviter")
     @RequiresHeader("Authorization")
-    ResponseEntity<Friend> listByInviter();
+    Friend[] listByInviter();
 
-    @Post("/friend/invite")
+    @Post("/friend/listByInvitee")
     @RequiresHeader("Authorization")
-    ResponseEntity<Friend> listByInvitee();
+    Friend[] listByInvitee();
 
     @Post("/friend/invite")
     @RequiresHeader("Authorization")
