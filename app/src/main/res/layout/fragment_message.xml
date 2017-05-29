@@ -62,7 +62,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
         android:src="@drawable/ic_send_24dp"
-        app:backgroundTint="@color/red"
+        app:backgroundTint="@color/white"
         />
 
 </android.support.design.widget.CoordinatorLayout>

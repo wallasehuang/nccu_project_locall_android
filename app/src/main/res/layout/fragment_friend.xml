@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@color/gray"
+                android:background="@color/white"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="15dp" />
@@ -100,7 +100,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
         android:src="@drawable/ic_keyboard_backspace_24dp"
-        app:backgroundTint="@color/red"
+        app:backgroundTint="@color/white"
         />
 
 

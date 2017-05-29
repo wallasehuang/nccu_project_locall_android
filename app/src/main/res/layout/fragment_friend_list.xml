@@ -44,7 +44,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
         android:src="@drawable/ic_person_add_24dp"
-        android:tint="@color/colorPrimary"
+
         app:backgroundTint="@color/white"
 
 
