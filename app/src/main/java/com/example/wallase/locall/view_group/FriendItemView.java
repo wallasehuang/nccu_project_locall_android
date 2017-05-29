@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -44,6 +45,9 @@ public class FriendItemView extends LinearLayout{
     @ViewById(R.id.btn_action)
     Button btn_action;
 
+    @ViewById(R.id.check)
+    CheckBox checkbox;
+
     private Friend friend;
 
 
@@ -59,15 +63,22 @@ public class FriendItemView extends LinearLayout{
             case 1:
                 this.txt_message.setVisibility(View.GONE);
                 this.btn_action.setVisibility(View.GONE);
+                this.checkbox.setVisibility(View.GONE);
                 break;
             case 2:
                 this.txt_message.setText("等待對方接受...");
                 this.txt_message.setVisibility(View.VISIBLE);
                 this.btn_action.setVisibility(View.GONE);
+                this.checkbox.setVisibility(View.GONE);
                 break;
             case 3:
                 this.txt_message.setVisibility(View.GONE);
                 this.btn_action.setVisibility(View.VISIBLE);
+                this.checkbox.setVisibility(View.GONE);
+                break;
+            case 4:
+                this.btn_action.setVisibility(View.GONE);
+                this.checkbox.setVisibility(View.VISIBLE);
                 break;
         }
 
@@ -77,6 +88,7 @@ public class FriendItemView extends LinearLayout{
     void btn_action(){
         accept();
     }
+
 
     @Background
     void accept(){

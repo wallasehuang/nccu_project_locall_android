@@ -3,6 +3,9 @@
     package="com.example.wallase.locall">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".app.MyApp_"
@@ -11,6 +14,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCmgLlBQlwO3_J33dE71lJXDy-ce6m3Dsc" />
+
         <activity
             android:name=".activity.LoginActivity_"
             android:label="@string/app_name"
@@ -27,6 +35,11 @@
             android:launchMode="singleTop" />
         <activity
             android:name=".activity.MainActivity_"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.MessageActivity_"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"/>

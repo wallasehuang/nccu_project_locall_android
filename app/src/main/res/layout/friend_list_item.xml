@@ -39,6 +39,15 @@
             android:layout_gravity="right|center_vertical"
             android:layout_marginRight="20dp"
             />
+        <CheckBox
+            android:id="@+id/check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:focusable="false"
+            android:clickable="false"
+            android:layout_marginRight="20dp"
+            />
     </FrameLayout>
 
 </LinearLayout>

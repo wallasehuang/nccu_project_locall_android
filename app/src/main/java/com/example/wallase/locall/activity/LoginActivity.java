@@ -117,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
 
             UserDao userDao = app.getUserDao();
             User user = new User();
+            user.setId((long)res_member.getId());
             user.setAccount(res_member.getAccount());
             user.setEmail(res_member.getEmail());
             user.setApi_token(res_member.getApi_token());

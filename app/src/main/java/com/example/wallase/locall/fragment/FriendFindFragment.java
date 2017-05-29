@@ -33,7 +33,7 @@ import org.springframework.web.client.HttpServerErrorException;
  * Created by wallase on 2017/5/19.
  */
 @EFragment(R.layout.fragment_friend)
-public class FriendFragment extends Fragment {
+public class FriendFindFragment extends Fragment {
 
     @App
     MyApp app;

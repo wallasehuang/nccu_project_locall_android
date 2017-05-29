@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.example.wallase.locall.R;
 import com.example.wallase.locall.api.AuthApi;
 import com.example.wallase.locall.app.MyApp;
-import com.example.wallase.locall.fragment.FriendFragment_;
 import com.example.wallase.locall.fragment.FriendListFragment_;
 import com.example.wallase.locall.fragment.MainFragment_;
 import com.example.wallase.locall.green_dao.User;
@@ -81,9 +80,9 @@ implements NavigationView.OnNavigationItemSelectedListener{
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_main) {
-            showFragment(new FriendListFragment_());
+            showFragment(new MainFragment_());
         } else if (id == R.id.nav_friend) {
-            showFragment(new FriendFragment_());
+            showFragment(new FriendListFragment_());
         } else if (id == R.id.nav_logout) {
             logout(user);
         }

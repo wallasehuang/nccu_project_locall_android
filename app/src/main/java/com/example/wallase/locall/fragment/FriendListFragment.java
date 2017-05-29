@@ -21,6 +21,7 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
@@ -63,7 +64,7 @@ public class FriendListFragment extends Fragment{
 
     @Click
     void find_friend(){
-        showFragment(new FriendFragment_());
+        showFragment(new FriendFindFragment_());
     }
 
 
@@ -83,7 +84,7 @@ public class FriendListFragment extends Fragment{
             list_friend.addAll(Arrays.asList(friend));
             showFriend(list_friend);
         }catch (HttpServerErrorException e){
-            Log.d("TAG", "RespnseEntity:" + e);
+            Log.d("TAG", "ResponseEntity:" + e);
         }
     }
 
@@ -102,6 +103,11 @@ public class FriendListFragment extends Fragment{
         fragmentTransaction.replace(R.id.flContent, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    @ItemClick
+    void listView(Friend friend){
+        Log.d("TAG",friend.getAccount());
     }
 
 }

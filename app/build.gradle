@@ -10,6 +10,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -35,6 +36,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:design:25.3.1'
+    compile 'com.google.android.gms:play-services:10.2.1'
+    compile 'com.google.android.gms:play-services-maps:10.2.1'
+    compile 'com.google.maps.android:android-maps-utils:0.4+'
 
     // greenDAO
     compile 'org.greenrobot:greendao:3.2.2'

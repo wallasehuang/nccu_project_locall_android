@@ -12,6 +12,7 @@ public class Friend {
     private String email;
     private String device_token;
     private int type;
+    private boolean check = false;
 
     public int getId() {
         return id;
@@ -51,6 +52,14 @@ public class Friend {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
     }
 }
 
