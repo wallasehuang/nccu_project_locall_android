@@ -7,9 +7,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.wallase.locall.R;
+import com.example.wallase.locall.view_group.MessageItemView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -36,14 +38,15 @@ public class MessageSendFragment extends Fragment{
     MapView mapView;
     @ViewById(R.id.message)
     EditText edit_message;
-    @ViewById(R.id.message_show)
-    TextView txt_message;
+    @ViewById(R.id.layout_message)
+    MessageItemView layout_message;
 
     private GoogleMap googleMap;
 
     @AfterViews
     void init(){
-        txt_message.setVisibility(View.GONE);
+//        layout_message.gone();
+        layout_message.setVisibility(View.GONE);
 
         mapView.onCreate(null);
         mapView.onResume();

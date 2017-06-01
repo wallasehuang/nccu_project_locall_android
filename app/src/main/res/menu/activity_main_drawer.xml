@@ -4,12 +4,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_main"
+            android:icon="@drawable/ic_pin_drop_24dp"
             android:title="訊息地圖" />
         <item
             android:id="@+id/nav_friend"
+            android:icon="@drawable/ic_people_24dp"
             android:title="好友清單" />
         <item
             android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_exit_to_app_24dp"
             android:title="登出" />
     </group>
 

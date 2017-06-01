@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @AfterViews
     void init(){
-        checkLogin();
     }
 
     @Click
@@ -70,16 +69,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this,RegisterActivity_.class);
         startActivity(intent);
         finish();
-    }
-
-    @Background
-    void checkLogin(){
-        UserDao userDao = app.getUserDao();
-        if(userDao.count() > 0){
-            Intent intent = new Intent(this,MainActivity_.class);
-            startActivity(intent);
-            finish();
-        }
     }
 
     @Background

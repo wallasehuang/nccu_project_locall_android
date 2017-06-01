@@ -27,7 +27,7 @@ import org.springframework.web.client.HttpServerErrorException;
 /**
  * Created by wallase on 2017/5/21.
  */
-@EViewGroup(R.layout.friend_list_item)
+@EViewGroup(R.layout.friend_item)
 public class FriendItemView extends LinearLayout{
 
     @App

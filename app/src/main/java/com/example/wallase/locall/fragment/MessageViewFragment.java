@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.wallase.locall.R;
+import com.example.wallase.locall.view_group.MessageItemView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 /**
@@ -34,8 +36,8 @@ public class MessageViewFragment extends Fragment {
     MapView mapView;
     @ViewById(R.id.message)
     EditText edit_message;
-    @ViewById(R.id.message_show)
-    TextView txt_message;
+    @ViewById(R.id.layout_message)
+    MessageItemView messageItem;
     @ViewById(R.id.send)
     FloatingActionButton btn_send;
 
@@ -43,11 +45,7 @@ public class MessageViewFragment extends Fragment {
 
     @AfterViews
     void init(){
-        btn_send.setVisibility(View.GONE);
-
-
-        edit_message.setVisibility(View.GONE);
-        txt_message.setText(getArguments().getString("message"));
+        setupMessage();
 
         mapView.onCreate(null);
         mapView.onResume();
@@ -57,14 +55,25 @@ public class MessageViewFragment extends Fragment {
     public void onResume(){
         super.onResume();
         mapView.onResume();
-        Log.d(TAG,"lat:"+String.valueOf(getArguments().getDouble("lat")));
-        Log.d(TAG,"lng:"+String.valueOf(getArguments().getDouble("lng")));
+        Log.d(TAG, "lat:" + String.valueOf(getArguments().getDouble("lat")));
+        Log.d(TAG, "lng:" + String.valueOf(getArguments().getDouble("lng")));
         setUpMap(new LatLng(getArguments().getDouble("lat"), getArguments().getDouble("lng")));
     }
 
     @Click(R.id.close)
     void close(){
         getActivity().finish();
+    }
+
+    @UiThread
+    void setupMessage(){
+        btn_send.setVisibility(View.GONE);
+        edit_message.setVisibility(View.GONE);
+        messageItem.bind(
+                getArguments().getString("sender"),
+                getArguments().getString("send_time"),
+                getArguments().getString("message"));
+
     }
 
     private void setUpMap(final LatLng location){

@@ -70,6 +70,7 @@ implements NavigationView.OnNavigationItemSelectedListener{
         showFragment(new MainFragment_());
 
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
 
     }
 
@@ -139,6 +140,7 @@ implements NavigationView.OnNavigationItemSelectedListener{
 
         Intent intent = new Intent(this, LoginActivity_.class);
         startActivity(intent);
+        finish();
 
     }
 

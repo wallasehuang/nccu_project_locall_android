@@ -186,6 +186,8 @@ public class MainFragment extends Fragment implements
             intent.putExtra("status","view");
             intent.putExtra("lat", res_message.getDoubleLatitude());
             intent.putExtra("lng", res_message.getDobleLongitude());
+            intent.putExtra("sender",res_message.getSender());
+            intent.putExtra("send_time",res_message.getSend_time());
             intent.putExtra("message",res_message.getMessage());
             startActivity(intent);
 
