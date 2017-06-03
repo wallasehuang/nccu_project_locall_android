@@ -81,6 +81,7 @@ implements NavigationView.OnNavigationItemSelectedListener{
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_main) {
+
             showFragment(new MainFragment_());
         } else if (id == R.id.nav_friend) {
             showFragment(new FriendListFragment_());

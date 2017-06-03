@@ -1,6 +1,7 @@
 package com.example.wallase.locall.view_group;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,10 +16,8 @@ import org.androidannotations.annotations.ViewById;
  * Created by wallase on 2017/6/1.
  */
 @EViewGroup(R.layout.message_item)
-public class MessageItemView extends LinearLayout{
+public class MessageItemView extends CardView{
 
-    @ViewById(R.id.root)
-    LinearLayout root;
     @ViewById(R.id.message_show)
     TextView txt_message;
     @ViewById(R.id.account)
@@ -44,7 +43,4 @@ public class MessageItemView extends LinearLayout{
         this.txt_message.setText(message);
     }
 
-    public void gone(){
-        this.root.setVisibility(View.GONE);
-    }
 }

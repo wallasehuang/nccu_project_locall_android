@@ -3,6 +3,7 @@ package com.example.wallase.locall.activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.example.wallase.locall.R;
 import com.example.wallase.locall.app.MyApp;
@@ -36,9 +37,10 @@ public class WelcomeActivity extends AppCompatActivity {
      private boolean checkLogin(){
         UserDao userDao = app.getUserDao();
 
-        if(userDao.count() > 0)
+        if(userDao.count() > 0){
+            Log.d("TAG","count:"+userDao.count());
             return true;
-
+        }
          return false;
      }
 

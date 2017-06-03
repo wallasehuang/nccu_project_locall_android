@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,10 +13,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="240dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp">
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/map"
@@ -30,25 +30,24 @@
             android:layout_marginLeft="10dp"
             android:background="@drawable/ic_clear_24dp"/>
 
-    </RelativeLayout>
+        </RelativeLayout>
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/message" />
-
-    <com.example.wallase.locall.view_group.MessageItemView_
-        android:id="@+id/layout_message"
-        android:padding="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="輸入訊息"
+            android:textSize="18dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="textMultiLine"
+            android:id="@+id/message" />
+        <com.example.wallase.locall.view_group.MessageItemView_
+            android:id="@+id/layout_message"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
 
     </LinearLayout>
 
