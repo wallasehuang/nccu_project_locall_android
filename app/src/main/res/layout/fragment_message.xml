@@ -44,7 +44,7 @@
             android:layout_marginRight="10dp"
             android:inputType="textMultiLine"
             android:id="@+id/message" />
-        <com.example.wallase.locall.view_group.MessageItemView_
+        <com.example.wallase.locall.view_group.MessageItemView
             android:id="@+id/layout_message"
             android:layout_height="match_parent"
             android:layout_width="match_parent" />
