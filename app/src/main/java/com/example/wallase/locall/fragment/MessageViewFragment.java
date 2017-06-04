@@ -69,6 +69,9 @@ public class MessageViewFragment extends Fragment {
     void setupMessage(){
         btn_send.setVisibility(View.GONE);
         edit_message.setVisibility(View.GONE);
+        Log.d(TAG,getArguments().getString("sender")+
+                getArguments().getString("send_time")+
+                getArguments().getString("message"));
         messageItem.bind(
                 getArguments().getString("sender"),
                 getArguments().getString("send_time"),

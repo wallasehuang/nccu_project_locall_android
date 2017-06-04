@@ -67,6 +67,7 @@ implements NavigationView.OnNavigationItemSelectedListener{
 
         userInfo();
 
+
         showFragment(new MainFragment_());
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -97,7 +98,6 @@ implements NavigationView.OnNavigationItemSelectedListener{
     void userInfo(){
         userDao = app.getUserDao();
         user = userDao.queryBuilder().limit(1).unique();
-
         showUserInfo(user.getAccount(), user.getEmail());
     }
 

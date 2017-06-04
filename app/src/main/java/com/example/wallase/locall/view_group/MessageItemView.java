@@ -3,8 +3,6 @@ package com.example.wallase.locall.view_group;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.wallase.locall.R;
